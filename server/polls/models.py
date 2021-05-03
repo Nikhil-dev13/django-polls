@@ -8,8 +8,9 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
-    def was_pubished_recently(self):
-        return self.publish_date >= timezone.now() - datetime.timedelta(days=1)
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.publish_date <= now
     
 
 
